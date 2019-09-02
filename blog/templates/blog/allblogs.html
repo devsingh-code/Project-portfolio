@@ -1,15 +1,14 @@
 
   <!doctype html>
   <html lang="en">
-
   <head>
-    {% load staticfiles%}
+    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Deovrat Singh</title>
+    <title>Deovrat Singh's Blogs</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -52,7 +51,7 @@
               <a class="nav-link" href=" {%static 'Resume.pdf'%}">Resume</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'allblogs'%}">Blog</a>
+              <a class="nav-link active" href="{% url 'allblogs'%}">Blog</a>
             </li>
 
           </ul>
@@ -61,39 +60,41 @@
     </header>
 
     <main role="main">
+      <div class="container">
 
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Hi, I'm Dev.</h1>
-          <p class="lead text-muted">Hi, My name is Deovrat. I love to make Django websites. It's the coding that I live for!!</p>
-          <p>
-            <a href="mailto:deovrat.singh619@hotmail.com?subject=Feedback"class="btn btn-primary my-2">Email Me</a>
-          </p>
-          <img src="{% static 'dp-behance.png'%}" height="300" width="200" class="img-fluid"/>
-        </div>
-      </section>
 
+        <h1 class='text-center pt-3'>Welcome to my Blog</h1>
+        <br/>
+        <br/>
+        <h2>Latest Blogs</h2>
+        <hr/>
+      </div>
       <div class="album py-5 bg-light">
         <div class="container">
 
           <div class="row">
 
 
-            {% for job in jobs.all %}
+            {% for blog in allblogs.all %}
             <div class="col-md-4">
+            <a href=" {% url 'detail' blog.id %}" ><h3>{{blog.title}}</h3></a>
+              <br/>
+              {{blog.pub_date}}
               <div class="card mb-4 shadow-sm">
-                <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{job.image.url}}"/>
+                <img class="bd-placeholder-img card-img-top img-fluid" width="100%" height="225" src="{{blog.image.url}}"/>
                 <div class="card-body">
-                  <p class="card-text">{{job.summary}}</p>
+                  <p class="card-text">{{blog.summary}}</p>
 
                 </div>
               </div>
             </div>
+            <br/>
             {%endfor%}
             </div>
           </div>
         </div>
       </div>
+
 
     </main>
 
